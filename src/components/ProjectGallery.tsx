@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -16,12 +15,12 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description: "Full-stack e-commerce solution with real-time inventory management and payment processing.",
-    tech: ["Next.js", "TypeScript", "Stripe", "PostgreSQL"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    imageUrl: "/projects/ecommerce.jpg"
+    title: "Little Great Minds",
+    description: "A web app for a local tutoring business",
+    tech: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
+    liveUrl: "https://littlegreatminds.netlify.app/",
+    githubUrl: "https://github.com/R1c4ar6/great-little-minds-react",
+    imageUrl: "/assets/project-one-prev.webp"
   },
   {
     id: 2,

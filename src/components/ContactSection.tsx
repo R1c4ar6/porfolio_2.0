@@ -29,7 +29,7 @@ export default function ContactSection() {
   }, []);
 
   const handleCopyEmail = () => {
-    navigator.clipboard.writeText('work@rjtech.com');
+    navigator.clipboard.writeText('rjtech@disroot.org');
     setCopiedEmail(true);
     setTimeout(() => setCopiedEmail(false), 2000);
   };
@@ -60,7 +60,7 @@ export default function ContactSection() {
                 onClick={handleCopyEmail}
                 className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
-                {copiedEmail ? 'Copied!' : 'work@rjtech.com'}
+                {copiedEmail ? 'Copied!' : 'rjtech@disroot.org'}
               </button>
             </div>
 
@@ -72,7 +72,7 @@ export default function ContactSection() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">GitHub</h3>
               <a
-                href="https://github.com/rjtech"
+                href="https://github.com/R1c4ar6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
@@ -89,12 +89,12 @@ export default function ContactSection() {
               </div>
               <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">LinkedIn</h3>
               <a
-                href="https://linkedin.com/in/rjtech"
+                href="https://www.linkedin.com/in/richard-jiménez-9a57b41b4"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
               >
-                rjtech
+                Richard Jiménez
               </a>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function ContactSection() {
               Ready to start your next project?
             </p>
             <a
-              href="mailto:work@rjtech.com"
+              href="mailto:rjtech@disroot.org"
               className="inline-block px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-full font-medium hover:bg-slate-800 dark:hover:bg-slate-100 transition-all duration-300 transform hover:scale-105"
             >
               Send Message

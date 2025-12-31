@@ -11,7 +11,7 @@ export default function HeroSection() {
 
   return (
     <section id="home" className="min-h-screen flex items-center justify-center px-6 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800" />
+      <div id='noise' className="absolute inset-0 bg-linear-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800" />
       
       <div className="relative z-10 text-center max-w-4xl mx-auto">
         <div 
@@ -22,10 +22,10 @@ export default function HeroSection() {
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6">
             RJTech
           </h1>
-          <h2 className="text-2xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-light">
-              Premium Developer Portfolio
+          <h2 className="text-3xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-light">
+              Freelance Developer
           </h2>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-2xl md:text-xl dark:text-white mb-12 max-w-2xl mx-auto leading-relaxed">
             Crafting exceptional digital experiences with cutting-edge technology. 
             Specialized in building scalable web applications that impress and perform.
           </p>

@@ -7,10 +7,10 @@ import Image from 'next/image';
 const projectData = {
   '1': {
     title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with real-time inventory management and payment processing.',
+    description: 'A web app for a local tutoring business',
     longDescription: 'A comprehensive e-commerce platform built with modern technologies. Features include user authentication, product catalog, shopping cart, payment processing with Stripe, real-time inventory management, and admin dashboard.',
-    tech: ['Next.js', 'TypeScript', 'Stripe', 'PostgreSQL', 'Prisma', 'Tailwind CSS'],
-    liveUrl: 'https://example.com',
+    tech: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
+    liveUrl: 'https://littlegreatminds.netlify.app/',
     githubUrl: 'https://github.com',
     features: [
       'User authentication and authorization',

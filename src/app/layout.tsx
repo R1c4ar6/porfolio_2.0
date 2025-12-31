@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "RJTech Portfolio 2.0",
-  description: "Developer portfolio showcasing live demos and case studies",
+  description: "Developer portfolio",
 };
 
 export default function RootLayout({
