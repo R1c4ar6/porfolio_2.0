@@ -6,75 +6,56 @@ import Image from 'next/image';
 
 const projectData = {
   '1': {
-    title: 'E-Commerce Platform',
+    title: 'Litle Great Minds',
     description: 'A web app for a local tutoring business',
-    longDescription: 'A comprehensive e-commerce platform built with modern technologies. Features include user authentication, product catalog, shopping cart, payment processing with Stripe, real-time inventory management, and admin dashboard.',
+    longDescription: 'A web app for a local tutoring business that allows users to check the school schedule and syllabus.',
     tech: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
     liveUrl: 'https://littlegreatminds.netlify.app/',
-    githubUrl: 'https://github.com',
+    githubUrl: 'https://github.com/R1c4ar6/great-little-minds-react',
     features: [
-      'User authentication and authorization',
-      'Product catalog with search and filtering',
-      'Shopping cart and checkout process',
-      'Payment processing with Stripe',
-      'Real-time inventory management',
-      'Admin dashboard for product management',
-      'Order tracking and history',
-      'Responsive design for all devices'
+      'Responsive design for all devices',
+      'Translations for English and Spanish',
+      'Images change based on the language'
+
     ],
     challenges: [
-      'Implementing real-time inventory updates',
-      'Optimizing payment flow for better conversion',
-      'Building scalable admin dashboard',
-      'Handling concurrent user sessions'
+      'Creating easy/family friendly design for parents and kids',
+      'Creating several translation files',
     ]
   },
   '2': {
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates and team collaboration features.',
-    longDescription: 'A powerful task management application designed for teams. Features real-time collaboration, task assignments, progress tracking, file sharing, and team communication tools.',
-    tech: ['React', 'Node.js', 'Socket.io', 'MongoDB', 'Express', 'JWT'],
-    liveUrl: 'https://example.com',
+    title: 'Argenta Jewelery Shop',
+    description: 'An e-commerce webpage for a local jewelry business.',
+    longDescription: 'An e-commerce webpage for a local jewelry business.',
+    tech: ["Wordpress", "PHP", "MySQL"],
+    liveUrl: 'https://argentashop.free.nf/',
     githubUrl: 'https://github.com',
     features: [
-      'Real-time task updates',
-      'Team collaboration tools',
-      'Task assignment and tracking',
-      'File sharing and attachments',
+      'Product visualization (lots of zoom)',
       'Comments and discussions',
-      'Progress visualization',
-      'Deadline reminders',
-      'Mobile-responsive interface'
+      'Proper payment system',
     ],
     challenges: [
+      'Creating a e-commerce webpage',
       'Implementing real-time synchronization',
-      'Managing concurrent edits',
-      'Optimizing database queries',
-      'Building intuitive user interface'
+      'Adding a translation button for all the content',
+      'Learning wordpress'
     ]
   },
   '3': {
-    title: 'Analytics Dashboard',
-    description: 'Real-time analytics dashboard with data visualization and reporting capabilities.',
+    title: 'Villa Marilú',
+    description: 'A webpage for a local restaurant in Panama',
     longDescription: 'A comprehensive analytics dashboard that provides real-time insights into business metrics. Features customizable widgets, data visualization, reporting tools, and export capabilities.',
-    tech: ['Vue.js', 'D3.js', 'Express', 'Redis', 'PostgreSQL', 'Chart.js'],
-    liveUrl: 'https://example.com',
-    githubUrl: 'https://github.com',
+    tech: ["React", "TypeScript", "Tailwind"],
+    liveUrl: 'https://restaurante-villa-marilu.vercel.app/',
+    githubUrl: 'https://github.com/R1c4ar6/villa_marilu_clean',
     features: [
-      'Real-time data visualization',
-      'Customizable dashboard widgets',
-      'Interactive charts and graphs',
-      'Data export capabilities',
-      'Scheduled reports',
-      'User role management',
-      'API integration',
+      'AI genetared dishes',
       'Mobile-responsive design'
     ],
     challenges: [
-      'Handling large datasets efficiently',
       'Creating responsive visualizations',
-      'Implementing real-time updates',
-      'Optimizing query performance'
+      'Learning tailwind'
     ]
   }
 };
@@ -91,7 +72,7 @@ export default function ProjectPage() {
           <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
             Project Not Found
           </h1>
-          <Link 
+          <Link
             href="/#projects"
             className="text-blue-600 dark:text-blue-400 hover:underline"
           >
@@ -105,7 +86,7 @@ export default function ProjectPage() {
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <div className="container mx-auto px-6 py-12">
-        <Link 
+        <Link
           href="/#projects"
           className="inline-flex items-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mb-8 transition-colors"
         >
@@ -149,11 +130,11 @@ export default function ProjectPage() {
             <h1 className="text-4xl font-bold text-slate-900 dark:text-white mb-4">
               {project.title}
             </h1>
-            
+
             <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
               {project.description}
             </p>
-            
+
             <p className="text-slate-600 dark:text-slate-400 mb-8 leading-relaxed">
               {project.longDescription}
             </p>

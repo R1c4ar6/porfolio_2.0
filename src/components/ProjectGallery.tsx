@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 interface Project {
   id: number;
@@ -24,21 +25,21 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Task Management App",
-    description: "Collaborative task management tool with real-time updates and team collaboration features.",
-    tech: ["React", "Node.js", "Socket.io", "MongoDB"],
-    liveUrl: "https://example.com",
+    title: "Argenta Jewelery Shop",
+    description: "An e-commerce webpage for a local jewelry business.",
+    tech: ["Wordpress", "PHP", "MySQL"],
+    liveUrl: "https://argentashop.free.nf/",
     githubUrl: "https://github.com",
-    imageUrl: "/projects/taskapp.jpg"
+    imageUrl: "/assets/project-two-prev.webp"
   },
   {
     id: 3,
-    title: "Analytics Dashboard",
-    description: "Real-time analytics dashboard with data visualization and reporting capabilities.",
-    tech: ["Vue.js", "D3.js", "Express", "Redis"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com",
-    imageUrl: "/projects/analytics.jpg"
+    title: "Villa Marilú",
+    description: "A webpage for a local restaurant in Panama",
+    tech: ["React", "TypeScript", "Tailwind"],
+    liveUrl: "https://restaurante-villa-marilu.vercel.app/",
+    githubUrl: "https://github.com/R1c4ar6/villa_marilu_clean",
+    imageUrl: "/assets/project-five-prev.webp"
   }
 ];
 
@@ -65,15 +66,17 @@ export default function ProjectGallery() {
               onMouseEnter={() => setHoveredProject(project.id)}
               onMouseLeave={() => setHoveredProject(null)}
             >
-              <div className="aspect-video bg-linear-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-16 h-16 bg-slate-400 dark:bg-slate-500 rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xl">{project.title[0]}</span>
-                  </div>
-                </div>
-                
+              <div className="aspect-video relative overflow-hidden">
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+
                 {hoveredProject === project.id && (
-                  <div className="absolute inset-0 bg-black bg-opacity-75 flex items-center justify-center transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/75 flex items-center justify-center transition-opacity duration-300">
                     <div className="flex gap-4">
                       <a
                         href={`/projects/${project.id}`}
@@ -101,7 +104,7 @@ export default function ProjectGallery() {
                 <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2">
                   {project.tech.map((tech, index) => (
                     <span

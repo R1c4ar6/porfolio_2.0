@@ -31,11 +31,11 @@ export default function AboutSection() {
     "JavaScript/TypeScript",
     "React/Next.js",
     "Node.js/Express",
-    "Python/Django",
-    "PostgreSQL/MongoDB",
-    "AWS/Docker",
-    "GraphQL/REST APIs",
-    "Tailwind CSS/SASS"
+    "PostgreSQL/MySQL",
+    "Docker",
+    "Tailwind CSS/SASS",
+    "PHP/Symfony",
+    "Wordpress"
   ];
 
   return (
@@ -54,7 +54,7 @@ export default function AboutSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div>
-            <div className="w-64 h-64 mx-auto bg-gradient-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center">
+            <div className="w-64 h-64 mx-auto bg-linear-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center">
               <div className="w-56 h-56 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center">
                 <span className="text-4xl font-bold text-slate-600 dark:text-slate-400">RJ</span>
               </div>
