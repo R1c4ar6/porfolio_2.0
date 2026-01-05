@@ -3,67 +3,13 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
+import { projects } from '@/components/ProjectGallery';
 
-const projectData = {
-  '1': {
-    title: 'Litle Great Minds',
-    description: 'A web app for a local tutoring business',
-    longDescription: 'A web app for a local tutoring business that allows users to check the school schedule and syllabus.',
-    tech: ["React", "TypeScript", "JavaScript", "CSS", "HTML"],
-    liveUrl: 'https://littlegreatminds.netlify.app/',
-    githubUrl: 'https://github.com/R1c4ar6/great-little-minds-react',
-    features: [
-      'Responsive design for all devices',
-      'Translations for English and Spanish',
-      'Images change based on the language'
-
-    ],
-    challenges: [
-      'Creating easy/family friendly design for parents and kids',
-      'Creating several translation files',
-    ]
-  },
-  '2': {
-    title: 'Argenta Jewelery Shop',
-    description: 'An e-commerce webpage for a local jewelry business.',
-    longDescription: 'An e-commerce webpage for a local jewelry business.',
-    tech: ["Wordpress", "PHP", "MySQL"],
-    liveUrl: 'https://argentashop.free.nf/',
-    githubUrl: 'https://github.com',
-    features: [
-      'Product visualization (lots of zoom)',
-      'Comments and discussions',
-      'Proper payment system',
-    ],
-    challenges: [
-      'Creating a e-commerce webpage',
-      'Implementing real-time synchronization',
-      'Adding a translation button for all the content',
-      'Learning wordpress'
-    ]
-  },
-  '3': {
-    title: 'Villa Marilú',
-    description: 'A webpage for a local restaurant in Panama',
-    longDescription: 'A comprehensive analytics dashboard that provides real-time insights into business metrics. Features customizable widgets, data visualization, reporting tools, and export capabilities.',
-    tech: ["React", "TypeScript", "Tailwind"],
-    liveUrl: 'https://restaurante-villa-marilu.vercel.app/',
-    githubUrl: 'https://github.com/R1c4ar6/villa_marilu_clean',
-    features: [
-      'AI genetared dishes',
-      'Mobile-responsive design'
-    ],
-    challenges: [
-      'Creating responsive visualizations',
-      'Learning tailwind'
-    ]
-  }
-};
 
 export default function ProjectPage() {
   const params = useParams();
   const projectId = params.id as string;
-  const project = projectData[projectId as keyof typeof projectData];
+  const project = projects.find(p => p.id === parseInt(projectId));
 
   if (!project) {
     return (
@@ -98,11 +44,15 @@ export default function ProjectPage() {
 
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <div className="aspect-video bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-xl overflow-hidden mb-8">
+            <div className="aspect-video bg-linear-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-600 rounded-xl overflow-hidden mb-8">
               <div className="w-full h-full flex items-center justify-center">
-                <div className="w-24 h-24 bg-slate-400 dark:bg-slate-500 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-3xl">{project.title[0]}</span>
-                </div>
+                <Image
+                  src={project.imageUrl}
+                  alt={project.title}
+                  width={800}
+                  height={450}
+                  className="object-cover w-full h-full"
+                />
               </div>
             </div>
 
@@ -165,7 +115,7 @@ export default function ProjectPage() {
             <ul className="space-y-3">
               {project.features.map((feature, index) => (
                 <li key={index} className="flex items-start">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 shrink-0"></div>
                   <span className="text-slate-600 dark:text-slate-400">{feature}</span>
                 </li>
               ))}
@@ -179,7 +129,7 @@ export default function ProjectPage() {
             <ul className="space-y-3">
               {project.challenges.map((challenge, index) => (
                 <li key={index} className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 shrink-0"></div>
                   <span className="text-slate-600 dark:text-slate-400">{challenge}</span>
                 </li>
               ))}

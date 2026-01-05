@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
@@ -54,9 +55,16 @@ export default function AboutSection() {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <div>
-            <div className="w-64 h-64 mx-auto bg-linear-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center">
-              <div className="w-56 h-56 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center">
-                <span className="text-4xl font-bold text-slate-600 dark:text-slate-400">RJ</span>
+            <div className="w-70 h-70 mx-auto bg-linear-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center">
+              <div className="w-65 h-65 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center">
+                <Image 
+                  src="/assets/rj_profile.webp" 
+                  alt="Profile" 
+                  width={220} 
+                  height={220} 
+                  className="rounded-full object-cover w-full h-full"
+                  priority
+                />
               </div>
             </div>
           </div>
@@ -67,7 +75,7 @@ export default function AboutSection() {
                 Hi, I'm a Full-Stack Developer
               </h3>
               <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                With over 5 years of experience in web development, I specialize in building 
+                With over 3 years of experience in web development, I specialize in building 
                 scalable, high-performance applications that solve real-world problems. 
                 My passion lies in creating clean, efficient code and exceptional user experiences.
               </p>
