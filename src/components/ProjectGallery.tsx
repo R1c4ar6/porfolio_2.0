@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: 3,
     title: "Villa Marilú",
     description: "A webpage for a local restaurant in Panama",
-    longDescription: 'A comprehensive analytics dashboard that provides real-time insights into business metrics. Features customizable widgets, data visualization, reporting tools, and export capabilities.',
+    longDescription: 'Website for a local restaurant in "La Guaca", Los Santos, Panama.',
     tech: ["React", "TypeScript", "Tailwind"],
     liveUrl: "https://restaurante-villa-marilu.vercel.app/",
     githubUrl: "https://github.com/R1c4ar6/villa_marilu_clean",
@@ -72,7 +72,7 @@ export const projects: Project[] = [
       'Mobile-responsive design'
     ],
     challenges: [
-      'Creating responsive visualizations',
+      'Creating responsive visualizations for said AI generated images',
       'Learning tailwind'
     ]
   }

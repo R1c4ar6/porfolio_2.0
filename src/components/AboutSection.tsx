@@ -31,7 +31,7 @@ export default function AboutSection() {
   const skills = [
     "JavaScript/TypeScript",
     "React/Next.js",
-    "Node.js/Express",
+    "Node.js/Astro.build",
     "PostgreSQL/MySQL",
     "Docker",
     "Tailwind CSS/SASS",

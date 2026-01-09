@@ -40,7 +40,7 @@ export default function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-medium"
+                className="text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors font-mono"
               >
                 {item.label}
               </a>
