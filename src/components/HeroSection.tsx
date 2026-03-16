@@ -20,7 +20,7 @@ export default function HeroSection() {
           }`}
         >
           <h1 className="text-5xl md:text-7xl font-bold text-slate-900 dark:text-white mb-6">
-            RJTech
+            Richard Jiménez
           </h1>
           <h2 className="text-3xl md:text-3xl text-slate-600 dark:text-slate-300 mb-8 font-light">
               Freelance Developer

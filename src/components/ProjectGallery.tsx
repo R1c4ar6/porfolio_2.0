@@ -73,7 +73,29 @@ export const projects: Project[] = [
     ],
     challenges: [
       'Creating responsive visualizations for said AI generated images',
-      'Learning tailwind'
+      "Learning tailwind css responsive gramatics (I'm used to bootstrap)"
+    ]
+  },
+  {
+    id: 4,
+    title: "Dashboard Demo",
+    description: "An admin dashboard simalation using dummyjson",
+    longDescription: 'This was a fun project to learn a bit about tokens and authentication built-in the api, instead of manual configuration of cookies',
+    tech: ["React", "TypeScript", "Tailwind", "Next.js", "DummyJSON"],
+    liveUrl: "https://dashboard-demo-xi-eight.vercel.app/",
+    githubUrl: "https://codeberg.org/R1c4ar6/dashboard-demo",
+    imageUrl: "/assets/project-six-prev.webp",
+    features: [
+      'Modals for users data lecture',
+      'Mobile-responsive design',
+      'Search bar by name',
+      'Departments filtering and user statistics'
+    ],
+    challenges: [
+      "Actually using the API tokens after authentication because I thought I had to do them manually",
+      "Removing the data from the cookies (I almost brick my laptop cuz I forgot to do that 6 times while working on it)",
+      "Safe typing every data type that was returned from the fetch of the API",
+      "Appliance of a protected route for the dashboard (I usually just put everything inside an IF statement and that was that)"
     ]
   }
 ];
