@@ -97,6 +97,27 @@ export const projects: Project[] = [
       "Safe typing every data type that was returned from the fetch of the API",
       "Appliance of a protected route for the dashboard (I usually just put everything inside an IF statement and that was that)"
     ]
+  },
+  {
+    id: 5,
+    title: "YouTube Audio Converter",
+    description: "Web app to convert youtube videos into mp3 or m4a audio files for local enjoyment",
+    longDescription: "This was probably one of the hardest projects I've worked on because I had to learned about yt-dlp library commands grammar since they have a very unic way to call things and it was my first time dockerizing a service",
+    tech: ["React", "TypeScript", "Tailwind", "Next.js", "DummyJSON"],
+    liveUrl: "https://you-audio-downloader.vercel.app/",
+    githubUrl: "https://codeberg.org/R1c4ar6/you-audio-downloader",
+    imageUrl: "/assets/project-seven-prev.webp",
+    features: [
+      "Quick convertions (always that the video is not longer than 5 minutes)",
+      "Mobile-responsive design",
+      "Simplicity over everything else, I just needed this to work and to do it fast"
+    ],
+    challenges: [
+      "Creating my own API service, had to rely on AI for the commands construction bc it was A LOT of info",
+      "Using said service with Railway, I had to dockerized first in order for Railway to read it",
+      "Connecting the weirdly constructed api link (had to look for tutorials to make it usable) from Railway to my Vercel frontend deployment",
+      "Fixing what broke from the interactions between my repo frontend deployment and the Railway/Vite environment variables syntax"
+    ]
   }
 ];
 
