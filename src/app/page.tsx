@@ -8,7 +8,7 @@ import HeroSection from '@/components/HeroSection';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)]">
       <Navigation />
       <HeroSection />
       <ProjectGallery />

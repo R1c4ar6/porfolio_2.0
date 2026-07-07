@@ -1,24 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f8f9fa;
+  --foreground: #1a1a2e;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --surface: #ffffff;
+  --surface-muted: #f1f3f5;
+  --border: #e2e5e9;
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #8b95a5;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0f1117;
+    --foreground: #e8eaed;
+    --accent: #60a5fa;
+    --accent-hover: #93bbfd;
+    --surface: #1a1d27;
+    --surface-muted: #242733;
+    --border: #2d3140;
+    --text-primary: #e8eaed;
+    --text-secondary: #9ca3af;
+    --text-muted: #6b7280;
+  }
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* Focus styles for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Section backgrounds */
 section#home {
   background-color: #111111;
   margin: 0;
@@ -34,30 +80,168 @@ section#home > div#noise {
   bottom: -50%;
   width: 200%;
   height: 200vh;
-  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background: transparent url('https://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
   background-repeat: repeat;
-  animation: noise-animation .2s infinite;
-  opacity: .9;
+  animation: noise-animation 0.2s infinite;
+  opacity: 0.9;
   visibility: visible;
 }
 
 @keyframes noise-animation {
-    0% { transform: translate(0,0) }
-    10% { transform: translate(-5%,-5%) }
-    20% { transform: translate(-10%,5%) }
-    30% { transform: translate(5%,-10%) }
-    40% { transform: translate(-5%,15%) }
-    50% { transform: translate(-10%,5%) }
-    60% { transform: translate(15%,0) }
-    70% { transform: translate(0,10%) }
-    80% { transform: translate(-15%,0) }
-    90% { transform: translate(10%,5%) }
-    100% { transform: translate(5%,0) }
+  0% { transform: translate(0,0) }
+  10% { transform: translate(-5%,-5%) }
+  20% { transform: translate(-10%,5%) }
+  30% { transform: translate(5%,-10%) }
+  40% { transform: translate(-5%,15%) }
+  50% { transform: translate(-10%,5%) }
+  60% { transform: translate(15%,0) }
+  70% { transform: translate(0,10%) }
+  80% { transform: translate(-15%,0) }
+  90% { transform: translate(10%,5%) }
+  100% { transform: translate(5%,0) }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ===== Hero Staggered Entrance ===== */
+@keyframes hero-stagger {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
+.animate-hero-stagger {
+  animation: hero-stagger 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* ===== Scroll Indicator ===== */
+@keyframes scroll-indicator {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.motion-safe\:animate-scroll-indicator {
+  animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+/* ===== Section Reveal ===== */
+@keyframes section-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes section-reveal-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes section-reveal-right {
+  0% {
+    opacity: 0;
+    transform: translateX(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-section-reveal {
+  animation: section-reveal 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* ===== Skill Tag Stagger ===== */
+@keyframes skill-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-skill-pop {
+  animation: skill-pop 0.4s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+/* ===== Checkmark Draw ===== */
+@keyframes checkmark-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-checkmark path {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: checkmark-draw 0.4s ease-out forwards;
+}
+
+/* ===== Hover Shine for Cards ===== */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  section#home > div#noise {
+    animation: none;
+  }
+
+  .animate-hero-stagger,
+  .animate-section-reveal,
+  .animate-skill-pop,
+  .motion-safe\:animate-scroll-indicator,
+  .animate-checkmark path {
+    animation: none;
+  }
+
+  .animate-hero-stagger,
+  .animate-section-reveal,
+  .animate-skill-pop {
+    opacity: 1;
+    transform: none;
+  }
+
+  .motion-safe\:animate-scroll-indicator {
+    opacity: 0.6;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

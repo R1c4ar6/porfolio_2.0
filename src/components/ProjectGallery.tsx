@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Project {
   id: number;
@@ -30,7 +30,6 @@ export const projects: Project[] = [
       'Responsive design for all devices',
       'Translations for English and Spanish',
       'Images change based on the language'
-
     ],
     challenges: [
       'Creating easy/family friendly design for parents and kids',
@@ -39,7 +38,7 @@ export const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Argenta Jewelery Shop",
+    title: "Argenta Jewelry Shop",
     description: "An e-commerce webpage for a local jewelry business.",
     longDescription: 'An e-commerce webpage for a local jewelry business.',
     tech: ["Wordpress", "PHP", "MySQL"],
@@ -52,10 +51,10 @@ export const projects: Project[] = [
       'Proper payment system',
     ],
     challenges: [
-      'Creating a e-commerce webpage',
+      'Creating an e-commerce webpage',
       'Implementing real-time synchronization',
       'Adding a translation button for all the content',
-      'Learning wordpress'
+      'Learning Wordpress'
     ]
   },
   {
@@ -68,116 +67,102 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/R1c4ar6/villa_marilu_clean",
     imageUrl: "/assets/project-five-prev.webp",
     features: [
-      'AI genetared dishes',
+      'AI-generated dishes',
       'Mobile-responsive design'
     ],
     challenges: [
-      'Creating responsive visualizations for said AI generated images',
-      "Learning tailwind css responsive gramatics (I'm used to bootstrap)"
+      'Creating responsive visualizations for AI generated images',
+      "Learning Tailwind CSS responsive syntax"
     ]
   },
   {
     id: 4,
     title: "Dashboard Demo",
-    description: "An admin dashboard simalation using dummyjson",
-    longDescription: 'This was a fun project to learn a bit about tokens and authentication built-in the api, instead of manual configuration of cookies',
+    description: "An admin dashboard simulation using dummyJSON",
+    longDescription: 'This was a fun project to learn about tokens and authentication built into the API, instead of manual cookie configuration.',
     tech: ["React", "TypeScript", "Tailwind", "Next.js", "DummyJSON"],
     liveUrl: "https://dashboard-demo-xi-eight.vercel.app/",
     githubUrl: "https://codeberg.org/R1c4ar6/dashboard-demo",
     imageUrl: "/assets/project-six-prev.webp",
     features: [
-      'Modals for users data lecture',
+      'Modals for user data display',
       'Mobile-responsive design',
       'Search bar by name',
-      'Departments filtering and user statistics'
+      'Department filtering and user statistics'
     ],
     challenges: [
-      "Actually using the API tokens after authentication because I thought I had to do them manually",
-      "Removing the data from the cookies (I almost brick my laptop cuz I forgot to do that 6 times while working on it)",
-      "Safe typing every data type that was returned from the fetch of the API",
-      "Appliance of a protected route for the dashboard (I usually just put everything inside an IF statement and that was that)"
+      "Using the API tokens after authentication (thought I had to handle them manually)",
+      "Removing data from cookies on logout (almost bricked my laptop testing it)",
+      "Type-safe handling of all API response types",
+      "Implementing protected routes for the dashboard"
     ]
   },
   {
     id: 5,
     title: "YouTube Audio Converter",
-    description: "Web app to convert youtube videos into mp3 or m4a audio files for local enjoyment",
-    longDescription: "This was probably one of the hardest projects I've worked on because I had to learned about yt-dlp library commands grammar since they have a very unic way to call things and it was my first time dockerizing a service",
-    tech: ["React", "TypeScript", "Tailwind", "Next.js", "DummyJSON"],
+    description: "Web app to convert YouTube videos to MP3 or M4A audio files",
+    longDescription: "One of the hardest projects — had to learn yt-dlp CLI syntax (very unique) and Dockerize a service for the first time.",
+    tech: ["React", "TypeScript", "Tailwind", "Next.js", "Python"],
     liveUrl: "https://you-audio-downloader.vercel.app/",
     githubUrl: "https://codeberg.org/R1c4ar6/you-audio-downloader",
     imageUrl: "/assets/project-seven-prev.webp",
     features: [
-      "Quick convertions (always that the video is not longer than 5 minutes)",
+      "Quick conversions (for videos up to 5 minutes)",
       "Mobile-responsive design",
-      "Simplicity over everything else, I just needed this to work and to do it fast"
+      "Minimalist UX — just works, and works fast"
     ],
     challenges: [
-      "Creating my own API service, had to rely on AI for the commands construction bc it was A LOT of info",
-      "Using said service with Railway, I had to dockerized first in order for Railway to read it",
-      "Connecting the weirdly constructed api link (had to look for tutorials to make it usable) from Railway to my Vercel frontend deployment",
-      "Fixing what broke from the interactions between my repo frontend deployment and the Railway/Vite environment variables syntax"
+      "Building a custom API service with yt-dlp — relied on AI for command construction",
+      "Dockerizing the service for Railway deployment",
+      "Connecting Railway backend to Vercel frontend",
+      "Handling environment variable syntax differences between Railway and Vite"
     ]
   }
 ];
 
 export default function ProjectGallery() {
-
   return (
-    <section id="projects" className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
+    <section id="projects" className="py-24 px-6 bg-[var(--surface-muted)]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
             Featured Projects
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
             Explore my latest work showcasing modern web development practices and innovative solutions.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <div
+            <Link
               key={project.id}
-              className="group relative bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              href={`/projects/${project.id}`}
+              className="group relative bg-[var(--surface)] rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-[var(--accent)] focus-visible:outline-offset-2"
             >
               <div className="aspect-video relative overflow-hidden">
                 <Image
                   src={project.imageUrl}
                   alt={project.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
 
-                <div
-                  className="absolute inset-0 bg-black/75 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  <div className="flex gap-4">
-                    <a
-                      href={`/projects/${project.id}`}
-                      className="px-6 py-3 bg-white text-slate-900 rounded-lg font-medium hover:bg-slate-100 transition-colors"
-                    >
-                      View Details
-                    </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-6 py-3 border-2 border-white text-white rounded-lg font-medium hover:bg-white hover:text-slate-900 transition-colors"
-                    >
-                      Code
-                    </a>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition-all duration-500">
+                  <span className="px-6 py-3 bg-white text-slate-900 rounded-lg font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                    View Details
+                  </span>
                 </div>
               </div>
 
-
               <div className="p-6">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                <h3 className="text-xl font-bold text-[var(--text-primary)] mb-3 group-hover:text-[var(--accent)] transition-colors duration-300">
                   {project.title}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                <p className="text-[var(--text-secondary)] mb-4 line-clamp-2">
                   {project.description}
                 </p>
 
@@ -185,14 +170,14 @@ export default function ProjectGallery() {
                   {project.tech.map((tech, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-[var(--surface-muted)] text-[var(--text-muted)] rounded-full text-xs font-mono font-medium transition-all duration-300 hover:bg-[var(--accent)]/10 hover:text-[var(--accent)] hover:scale-105"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

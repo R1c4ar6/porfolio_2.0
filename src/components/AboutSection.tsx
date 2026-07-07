@@ -1,31 +1,28 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import Image from 'next/image';
 
 export default function AboutSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
     );
 
-    const element = document.getElementById('about-section');
-    if (element) {
-      observer.observe(element);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   const skills = [
@@ -40,28 +37,33 @@ export default function AboutSection() {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 bg-white dark:bg-slate-800">
-      <div id="about-section" className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white mb-4">
+    <section id="about" className="py-24 px-6 bg-[var(--surface)]">
+      <div className="max-w-4xl mx-auto">
+        <div className={`text-center mb-16 transition-all duration-1000 ease-out ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
+          <h2 className="text-4xl md:text-5xl font-bold text-[var(--text-primary)] mb-4">
             About Me
           </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-400">
+          <p className="text-lg text-[var(--text-secondary)]">
             Passionate developer creating exceptional digital experiences
           </p>
         </div>
 
-        <div className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-          <div>
-            <div className="w-70 h-70 mx-auto bg-linear-to-br from-slate-300 to-slate-400 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center">
-              <div className="w-65 h-65 bg-slate-200 dark:bg-slate-800 rounded-full flex items-center justify-center">
-                <Image 
-                  src="/assets/rj_profile.webp" 
-                  alt="Profile" 
-                  width={220} 
-                  height={220} 
+        <div
+          ref={sectionRef}
+          className={`grid md:grid-cols-2 gap-12 items-center transition-all duration-1000 ease-out ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}
+        >
+          <div className="flex justify-center">
+            <div className="w-64 h-64 bg-linear-to-br from-slate-400 to-slate-500 dark:from-slate-600 dark:to-slate-700 rounded-full flex items-center justify-center shrink-0 transition-transform duration-500 hover:scale-105">
+              <div className="w-60 h-60 bg-[var(--surface)] rounded-full flex items-center justify-center overflow-hidden">
+                <Image
+                  src="/assets/rj_profile.webp"
+                  alt="Richard Jiménez"
+                  width={220}
+                  height={220}
                   className="rounded-full object-cover w-full h-full"
                   priority
                 />
@@ -71,30 +73,38 @@ export default function AboutSection() {
 
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Hi, I'm a Full-Stack Developer
+              <h3 className="text-2xl font-bold text-[var(--text-primary)] mb-4">
+                Full-Stack Developer
               </h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-                With over 3 years of experience in web development, I specialize in building 
-                scalable, high-performance applications that solve real-world problems. 
+              <p className="text-[var(--text-secondary)] leading-relaxed mb-4">
+                With over 3 years of experience in web development, I specialize in building
+                scalable, high-performance applications that solve real-world problems.
                 My passion lies in creating clean, efficient code and exceptional user experiences.
               </p>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                I work closely with clients to understand their needs and deliver solutions 
-                that exceed expectations. Whether it's a startup MVP or an enterprise application, 
+              <p className="text-[var(--text-secondary)] leading-relaxed">
+                I work closely with clients to understand their needs and deliver solutions
+                that exceed expectations. Whether it&apos;s a startup MVP or an enterprise application,
                 I bring the same level of dedication and expertise to every project.
               </p>
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold text-slate-900 dark:text-white mb-3">
+              <h4 className="text-lg font-semibold text-[var(--text-primary)] mb-3">
                 Technical Expertise
               </h4>
               <div className="grid grid-cols-2 gap-2">
                 {skills.map((skill, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                    <span className="text-slate-600 dark:text-slate-400 text-sm">
+                  <div
+                    key={index}
+                    className={`flex items-center gap-2 transition-all duration-500 ease-out ${
+                      isVisible
+                        ? 'opacity-100 translate-x-0'
+                        : 'opacity-0 -translate-x-4'
+                    }`}
+                    style={{ transitionDelay: `${index * 80}ms` }}
+                  >
+                    <div className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full shrink-0" />
+                    <span className="text-[var(--text-secondary)] text-sm">
                       {skill}
                     </span>
                   </div>
