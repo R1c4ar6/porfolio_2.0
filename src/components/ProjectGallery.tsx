@@ -117,6 +117,24 @@ export const projects: Project[] = [
       "Connecting Railway backend to Vercel frontend",
       "Handling environment variable syntax differences between Railway and Vite"
     ]
+  },
+  {
+    id: 6,
+    title: "Dog Sitting Service",
+    description: "A simple HTML/CSS webpage for a dog sitting service client.",
+    longDescription: "A straightforward project to create a responsive webpage for a local dog sitting service.",
+    tech: ["HTML", "CSS"],
+    liveUrl: "https://brunoycompania.es/",
+    githubUrl: "https://github.com/R1c4ar6/brunoAndCo",
+    imageUrl: "/assets/project-8-prev.webp",
+    features: [
+      "Responsive design for all devices",
+      "Simple and intuitive user interface"
+    ],
+    challenges: [
+      "Creating a visually appealing design with minimal resources",
+      "Ensuring cross-browser compatibility"
+    ]
   }
 ];
 
