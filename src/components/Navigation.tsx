@@ -13,6 +13,7 @@ export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const isSolid = isScrolled || isMobileMenuOpen;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,7 +48,7 @@ export default function Navigation() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+        isSolid
           ? 'bg-[var(--background)]/80 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
       }`}
@@ -58,9 +59,18 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <a
             href="#home"
-            className="text-2xl font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors duration-300"
+            className={`text-2xl font-bold transition-[color,opacity] duration-300 hover:opacity-80 ${
+              isSolid ? 'text-[var(--text-primary)]' : 'text-white'
+            }`}
           >
-            RJ<span className="text-[var(--accent)]">Tech</span>
+            RJ
+            <span
+              className={`transition-colors duration-300 ${
+                isSolid ? 'text-[var(--accent)]' : 'text-[var(--hero-accent)]'
+              }`}
+            >
+              Tech
+            </span>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -71,15 +81,24 @@ export default function Navigation() {
                 <a
                   key={item.label}
                   href={item.href}
+                  aria-current={isActive ? 'location' : undefined}
                   className={`relative text-sm font-mono transition-colors duration-300 ${
                     isActive
-                      ? 'text-[var(--accent)]'
-                      : 'text-[var(--text-secondary)] hover:text-[var(--accent)]'
+                      ? isSolid
+                        ? 'text-[var(--accent)]'
+                        : 'text-[var(--hero-accent)]'
+                      : isSolid
+                        ? 'text-[var(--text-secondary)] hover:text-[var(--accent)]'
+                        : 'text-slate-300 hover:text-white'
                   }`}
                 >
                   {item.label}
                   {isActive && (
-                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 bg-[var(--accent)] rounded-full" />
+                    <span
+                      className={`absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full transition-colors duration-300 ${
+                        isSolid ? 'bg-[var(--accent)]' : 'bg-[var(--hero-accent)]'
+                      }`}
+                    />
                   )}
                 </a>
               );
@@ -88,9 +107,14 @@ export default function Navigation() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors"
+            className={`p-2 transition-colors md:hidden ${
+              isSolid
+                ? 'text-[var(--text-secondary)] hover:text-[var(--accent)]'
+                : 'text-slate-300 hover:text-white'
+            }`}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" suppressHydrationWarning>
               {isMobileMenuOpen ? (
@@ -103,6 +127,9 @@ export default function Navigation() {
         </div>
 
         <div
+          id="mobile-menu"
+          aria-hidden={!isMobileMenuOpen}
+          inert={!isMobileMenuOpen}
           className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
             isMobileMenuOpen ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
           }`}
@@ -114,7 +141,12 @@ export default function Navigation() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block py-3 text-[var(--text-secondary)] hover:text-[var(--accent)] transition-colors font-medium"
+                aria-current={activeSection === item.href.slice(1) ? 'location' : undefined}
+                className={`block py-3 font-medium transition-colors ${
+                  activeSection === item.href.slice(1)
+                    ? 'text-[var(--accent)]'
+                    : 'text-[var(--text-secondary)] hover:text-[var(--accent)]'
+                }`}
                 role="menuitem"
               >
                 {item.label}
